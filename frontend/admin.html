@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Nodoviaja | Panel de Administración</title>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-sky-50 via-slate-50 to-amber-50 font-sans text-slate-800 antialiased">
+
+    <!-- Navegación principal del panel -->
+    <aside class="fixed inset-y-0 left-0 z-20 flex w-16 flex-col border-r border-sky-100 bg-white/95 px-2 py-6 shadow-sm shadow-sky-950/5 sm:w-64 sm:px-4">
+
+        <div class="mb-8 flex items-center justify-center gap-3 px-2 sm:justify-start">
+            <img src="../ima/logotrs.png" alt="Logo de Nodoviaja" class="h-10 w-10 rounded-full object-cover sm:h-12 sm:w-12">
+            <h2 class="hidden whitespace-nowrap bg-gradient-to-r from-amber-700 to-teal-700 bg-clip-text font-[Outfit] text-[1.35rem] font-extrabold italic leading-none tracking-[-0.06em] text-transparent sm:block">Nodoviaja</h2>
+        </div>
+
+        <nav class="flex flex-col gap-2" aria-label="Navegación administrativa">
+            <button class="menu-item flex items-center justify-center gap-3 rounded-xl bg-teal-50 px-3 py-3 text-sm font-semibold text-teal-800 transition-colors hover:bg-teal-50 sm:justify-start" data-section="dashboard" aria-current="page">
+                <i class="fa-solid fa-chart-line w-5 text-center" aria-hidden="true"></i> <span class="menu-label hidden sm:inline">Dashboard</span>
+            </button>
+
+            <button class="menu-item flex items-center justify-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 sm:justify-start" data-section="reservas">
+                <i class="fa-regular fa-calendar-days w-5 text-center" aria-hidden="true"></i> <span class="menu-label hidden sm:inline">Reservas</span>
+            </button>
+
+            <button class="menu-item flex items-center justify-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 sm:justify-start" data-section="servicios">
+                <i class="fa-solid fa-hotel w-5 text-center" aria-hidden="true"></i> <span class="menu-label hidden sm:inline">Servicios ofrecidos</span>
+            </button>
+
+            <button class="menu-item flex items-center justify-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 sm:justify-start" data-section="mensajes">
+                <i class="fa-regular fa-comment w-5 text-center" aria-hidden="true"></i> <span class="menu-label hidden sm:inline">Mensajes</span>
+            </button>
+
+            <button class="menu-item flex items-center justify-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 sm:justify-start" data-section="reportes">
+                <i class="fa-regular fa-file-lines w-5 text-center" aria-hidden="true"></i> <span class="menu-label hidden sm:inline">Reportes</span>
+            </button>
+
+            <button class="menu-item flex items-center justify-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 sm:justify-start" data-section="ajustes">
+                <i class="fa-solid fa-gear w-5 text-center" aria-hidden="true"></i> <span class="menu-label hidden sm:inline">Ajustes</span>
+            </button>
+        </nav>
+
+        <a href="../iniciarsesion/login.html" class="mt-auto hidden rounded-xl border border-amber-200/70 bg-amber-50/70 px-3 py-3 text-center text-sm font-semibold text-amber-900 transition-colors hover:bg-amber-100/70 sm:block">Cerrar sesión</a>
+
+    </aside>
+
+
+    <!-- Área de contenido del panel -->
+    <main class="ml-16 min-h-screen p-4 sm:ml-64 sm:p-8">
+
+        <!-- Encabezado con título y usuario administrador -->
+        <header class="mb-8 flex items-start justify-between gap-4">
+
+            <div>
+                <h1 id="page-title" class="text-2xl font-bold text-slate-900 sm:text-3xl">Dashboard</h1>
+                <p class="mt-1 text-sm text-slate-500">Panel de administración</p>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="flex size-11 items-center justify-center rounded-full border border-teal-200 bg-teal-50 font-bold text-teal-800">AD</div>
+
+                <div>
+                    <strong class="block text-sm text-slate-800">Administrador</strong>
+                    <small class="mt-0.5 block text-xs font-bold text-teal-700">Nodoviaja</small>
+                </div>
+            </div>
+
+            <button id="theme-toggle" type="button" class="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-xl border border-sky-200 bg-white/80 px-3 py-2 text-sm font-semibold text-slate-700 shadow-sm transition-colors hover:border-teal-300 hover:bg-teal-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600" aria-pressed="false" aria-label="Activar modo oscuro">
+                <span id="theme-icon" aria-hidden="true">☾</span>
+                <span id="theme-label" class="hidden md:inline">Modo oscuro</span>
+            </button>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="section space-y-6">
+
+            <div class="mb-6 flex flex-col items-start justify-between gap-4 rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50/80 via-white to-amber-50/60 p-6 sm:flex-row sm:items-center sm:p-7">
+                <div>
+                    <h2 class="mb-2 text-xl font-bold text-slate-900">¡Bienvenido al panel! 👋</h2>
+                    <p class="text-sm text-slate-600">Administra los servicios y reservas de Nodoviaja.</p>
+                </div>
+
+                <button class="rounded-xl bg-teal-700 px-5 py-3 text-sm font-bold text-white shadow-sm shadow-teal-900/10 transition-all hover:-translate-y-0.5 hover:bg-teal-800" onclick="mostrarSeccion('servicios')">
+                    + Añadir servicio
+                </button>
+            </div>
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
+                <div data-open-section="reservas" data-reservation-filter="pendiente" role="button" tabindex="0" aria-label="Ver reservas pendientes" class="group flex cursor-pointer items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-amber-200 hover:shadow-md hover:shadow-amber-900/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600 motion-reduce:transform-none motion-reduce:transition-none">
+                    <div class="flex size-12 items-center justify-center rounded-xl bg-amber-50 text-xl text-amber-700 transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none" aria-hidden="true"><i class="fa-regular fa-calendar-days"></i></div>
+                    <div>
+                        <p class="mb-1 text-sm text-slate-500">Reservas pendientes</p>
+                        <h3 id="statPendientes" class="text-2xl font-bold text-slate-900">8</h3>
+                    </div>
+                </div>
+
+                <div data-open-section="reservas" data-reservation-filter="aceptada" role="button" tabindex="0" aria-label="Ver reservas aceptadas" class="group flex cursor-pointer items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-md hover:shadow-teal-900/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 motion-reduce:transform-none motion-reduce:transition-none">
+                    <div class="flex size-12 items-center justify-center rounded-xl bg-teal-50 text-xl text-teal-700 transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none" aria-hidden="true"><i class="fa-regular fa-square-check"></i></div>
+                    <div>
+                        <p class="mb-1 text-sm text-slate-500">Reservas aceptadas</p>
+                        <h3 id="statAceptadas" class="text-2xl font-bold text-slate-900">24</h3>
+                    </div>
+                </div>
+
+                <div data-open-section="servicios" role="button" tabindex="0" aria-label="Ver servicios ofrecidos" class="group flex cursor-pointer items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-sky-200 hover:shadow-md hover:shadow-sky-900/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 motion-reduce:transform-none motion-reduce:transition-none">
+                    <div class="flex size-12 items-center justify-center rounded-xl bg-sky-50 text-xl text-sky-700 transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none" aria-hidden="true"><i class="fa-solid fa-hotel"></i></div>
+                    <div>
+                        <p class="mb-1 text-sm text-slate-500">Servicios ofrecidos</p>
+                        <h3 id="statServicios" class="text-2xl font-bold text-slate-900">12</h3>
+                    </div>
+                </div>
+
+                <div data-open-section="mensajes" role="button" tabindex="0" aria-label="Ver mensajes" class="group flex cursor-pointer items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-md hover:shadow-orange-900/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 motion-reduce:transform-none motion-reduce:transition-none">
+                    <div class="flex size-12 items-center justify-center rounded-xl bg-orange-50 text-xl text-orange-800 transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none" aria-hidden="true"><i class="fa-regular fa-comment"></i></div>
+                    <div>
+                        <p class="mb-1 text-sm text-slate-500">Mensajes</p>
+                        <h3 id="statMensajes" class="text-2xl font-bold text-slate-900">5</h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- RESERVAS RECIENTES -->
+
+            <div class="mb-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:border-teal-200 hover:shadow-md hover:shadow-teal-900/5 motion-reduce:transition-none sm:p-6">
+
+                <div class="mb-5 flex items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Reservas pendientes</h2>
+                        <p class="mt-1 text-sm text-slate-500">Solicitudes que necesitan atención.</p>
+                    </div>
+
+                    <button class="font-semibold text-teal-800 transition-colors hover:text-sky-800" onclick="mostrarSeccion('reservas')">
+                        Ver todas
+                    </button>
+                </div>
+
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full min-w-[700px] border-collapse text-left">
+
+                        <thead class="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
+                            <tr class="[&_th]:px-3 [&_th]:py-3">
+                                <th>Cliente</th>
+                                <th>Servicio</th>
+                                <th>Fecha</th>
+                                <th>Personas</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaDashboard" class="divide-y divide-slate-100 text-sm text-slate-700 [&_td]:px-3 [&_td]:py-4"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= RESERVAS ================= -->
+
+        <section id="reservas" class="section hidden space-y-6">
+
+            <div class="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Reservas</h2>
+                    <p class="mt-1 text-sm text-slate-500">Gestiona las reservas de tus clientes.</p>
+                </div>
+            </div>
+
+            <div class="mb-4 flex gap-2 border-b border-slate-200">
+
+                <button type="button" class="tab border-b-2 border-teal-700 px-4 py-2.5 font-semibold text-teal-800" data-status="pendiente" onclick="mostrarReservas('pendiente')" aria-pressed="true">
+                    Pendientes
+                </button>
+
+                <button type="button" class="tab border-b-2 border-transparent px-4 py-2.5 font-medium text-slate-500 hover:text-teal-800" data-status="aceptada" onclick="mostrarReservas('aceptada')" aria-pressed="false">
+                    Aceptadas
+                </button>
+
+                <button type="button" class="tab border-b-2 border-transparent px-4 py-2.5 font-medium text-slate-500 hover:text-teal-800" data-status="rechazada" onclick="mostrarReservas('rechazada')" aria-pressed="false">
+                    Rechazadas
+                </button>
+
+            </div>
+
+            <p id="reservasFeedback" class="sr-only" role="status" aria-live="polite"></p>
+
+            <div class="mb-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full min-w-[700px] border-collapse text-left">
+
+                        <thead class="bg-slate-50 text-xs uppercase tracking-wide text-slate-500">
+                            <tr class="[&_th]:px-3 [&_th]:py-3">
+                                <th>Cliente</th>
+                                <th>Servicio</th>
+                                <th>Fecha</th>
+                                <th>Personas</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaReservas" class="divide-y divide-slate-100 text-sm text-slate-700 [&_td]:px-3 [&_td]:py-4">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SERVICIOS ================= -->
+
+        <section id="servicios" class="section hidden space-y-6">
+
+            <div class="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Servicios ofrecidos</h2>
+                    <p class="mt-1 text-sm text-slate-500">Administra los servicios disponibles para los viajeros.</p>
+                </div>
+
+                <button class="rounded-xl bg-teal-700 px-5 py-3 text-sm font-bold text-white shadow-sm shadow-teal-900/10 transition-all hover:-translate-y-0.5 hover:bg-teal-800" onclick="mostrarFormularioServicio()">
+                    + Añadir servicio
+                </button>
+
+            </div>
+
+
+            <!-- FORMULARIO -->
+
+            <div id="formServicio" class="mb-6 hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+
+                <div class="mb-5 flex items-center justify-between">
+
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Nuevo servicio</h2>
+                        <p class="mt-1 text-sm text-slate-500">Completa la información del servicio.</p>
+                    </div>
+
+                    <button class="rounded-lg px-3 py-2 text-lg text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900" onclick="ocultarFormularioServicio()" aria-label="Cerrar formulario">
+                        ✕
+                    </button>
+
+                </div>
+
+
+                <form id="servicioForm" class="space-y-4">
+                    <p id="service-feedback" class="sr-only" role="status" aria-live="polite"></p>
+
+                    <div class="flex flex-col gap-2">
+
+                        <label for="nombreServicio" class="text-sm font-semibold text-slate-700">
+                            Nombre del servicio
+                        </label>
+
+                        <input type="text" id="nombreServicio" placeholder="Ej: Tour por el centro de Garzón" required class="w-full rounded-lg border border-slate-300 px-3 py-3 outline-none transition focus:border-teal-700 focus:ring-2 focus:ring-teal-700/20">
+
+                    </div>
+
+
+                    <div class="flex flex-col gap-2">
+
+                        <label for="descripcionServicio" class="text-sm font-semibold text-slate-700">
+                            Descripción
+                        </label>
+
+                        <textarea id="descripcionServicio" rows="5" placeholder="Describe el servicio..."
+                            required class="w-full resize-y rounded-lg border border-slate-300 px-3 py-3 outline-none transition focus:border-teal-700 focus:ring-2 focus:ring-teal-700/20"></textarea>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+                        <div class="flex flex-col gap-2">
+
+                            <label for="precioServicio" class="text-sm font-semibold text-slate-700">
+                                Precio
+                            </label>
+
+                            <div class="flex overflow-hidden rounded-lg border border-slate-300">
+
+                                <span class="border-r border-amber-100 bg-amber-50/70 px-3 py-3 font-semibold text-amber-900">$</span>
+
+                                <input type="number" id="precioServicio" min="0" placeholder="50000" required class="min-w-0 flex-1 border-0 px-3 py-3 outline-none focus:ring-2 focus:ring-inset focus:ring-teal-700/30">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="flex flex-col gap-2">
+
+                            <label for="tipoServicio" class="text-sm font-semibold text-slate-700">
+                                Tipo de servicio
+                            </label>
+
+                            <select id="tipoServicio" required class="w-full rounded-lg border border-slate-300 bg-white px-3 py-3 outline-none focus:border-teal-700 focus:ring-2 focus:ring-teal-700/20">
+
+                                <option value="">
+                                    Selecciona un tipo
+                                </option>
+
+                                <option value="turismo">
+                                    Turismo
+                                </option>
+
+                                <option value="hoteleria">
+                                    Hotelería
+                                </option>
+
+                                <option value="restaurante">
+                                    Restaurante
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-4 flex justify-end gap-3">
+
+                        <button type="button" class="rounded-lg border border-slate-300 bg-white px-4 py-3 font-semibold text-slate-700 transition-colors hover:bg-slate-50" onclick="ocultarFormularioServicio()">
+                            Cancelar
+                        </button>
+
+                        <button type="submit" class="rounded-lg bg-teal-700 px-4 py-3 font-semibold text-white shadow-sm shadow-teal-900/10 transition-colors hover:bg-teal-800" id="btn-guardar">
+                            Guardar servicio
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- LISTADO DE SERVICIOS -->
+
+            <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3" id="servicesGrid">
+
+                <div data-service-id="service-tour" class="overflow-hidden rounded-2xl border border-teal-100 bg-white shadow-sm">
+
+                    <div class="flex h-36 items-center justify-center bg-gradient-to-br from-amber-50 to-teal-50 text-5xl">
+                        🌳
+                    </div>
+
+                    <div class="p-5">
+
+                        <span class="text-xs font-bold text-teal-800">
+                            Turismo
+                        </span>
+
+                        <h3 class="my-2 font-bold text-slate-900">Tour Río Magdalena</h3>
+
+                        <p class="mb-4 text-sm leading-relaxed text-slate-600">
+                            Recorrido turístico por los principales
+                            atractivos naturales de la región.
+                        </p>
+
+                        <strong class="text-slate-900">$80.000</strong>
+                        <p class="mt-2 text-xs font-medium text-teal-700" data-service-availability>Publicado</p>
+                        <div class="mt-4 flex gap-2 border-t border-slate-100 pt-3">
+                            <button type="button" data-service-action="edit" class="rounded-lg border border-sky-200 px-3 py-2 text-xs font-semibold text-sky-800 transition-colors hover:bg-sky-50">Editar</button>
+                            <button type="button" data-service-action="delete" class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:bg-slate-50">Eliminar</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div data-service-id="service-hotel" class="overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-sm">
+
+                    <div class="flex h-36 items-center justify-center bg-sky-50 text-5xl">
+                        🏨
+                    </div>
+
+                    <div class="p-5">
+
+                        <span class="text-xs font-bold text-sky-800">
+                            Hotelería
+                        </span>
+
+                        <h3 class="my-2 font-bold text-slate-900">Hotel El Parque</h3>
+
+                        <p class="mb-4 text-sm leading-relaxed text-slate-600">
+                            Habitaciones cómodas ubicadas en el
+                            centro del municipio.
+                        </p>
+
+                        <strong class="text-slate-900">$120.000</strong>
+                        <p class="mt-2 text-xs font-medium text-teal-700" data-service-availability>Publicado</p>
+                        <div class="mt-4 flex gap-2 border-t border-slate-100 pt-3">
+                            <button type="button" data-service-action="edit" class="rounded-lg border border-sky-200 px-3 py-2 text-xs font-semibold text-sky-800 transition-colors hover:bg-sky-50">Editar</button>
+                            <button type="button" data-service-action="delete" class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:bg-slate-50">Eliminar</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div data-service-id="service-restaurant" class="overflow-hidden rounded-2xl border border-amber-100 bg-white shadow-sm">
+
+                    <div class="flex h-36 items-center justify-center bg-amber-50 text-5xl">
+                        🍽️
+                    </div>
+
+                    <div class="p-5">
+
+                        <span class="text-xs font-bold text-amber-800">
+                            Restaurante
+                        </span>
+
+                        <h3 class="my-2 font-bold text-slate-900">Restaurante La Casona</h3>
+
+                        <p class="mb-4 text-sm leading-relaxed text-slate-600">
+                            Gastronomía tradicional y platos típicos
+                            de la región.
+                        </p>
+
+                        <strong class="text-slate-900">$35.000</strong>
+                        <p class="mt-2 text-xs font-medium text-teal-700" data-service-availability>Publicado</p>
+                        <div class="mt-4 flex gap-2 border-t border-slate-100 pt-3">
+                            <button type="button" data-service-action="edit" class="rounded-lg border border-sky-200 px-3 py-2 text-xs font-semibold text-sky-800 transition-colors hover:bg-sky-50">Editar</button>
+                            <button type="button" data-service-action="delete" class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:bg-slate-50">Eliminar</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MENSAJES ================= -->
+
+        <section id="mensajes" class="section hidden space-y-6">
+
+            <div class="mb-6">
+
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Mensajes</h2>
+                    <p class="mt-1 text-sm text-slate-500">Comunícate con tus clientes.</p>
+                </div>
+
+            </div>
+
+
+            <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+
+                <div class="flex gap-4 border-b border-slate-100 p-5 transition-colors hover:bg-sky-50/50 last:border-0" data-message="maria">
+
+                    <div class="flex size-11 shrink-0 items-center justify-center rounded-full bg-sky-100 font-bold text-sky-800">
+                        ML
+                    </div>
+
+                    <div class="min-w-0 flex-1">
+
+                        <strong class="text-sm text-slate-900">María López</strong>
+
+                        <span class="float-right text-xs text-slate-400">Hoy, 4:35 PM</span>
+
+                        <p class="mt-2 text-sm text-slate-600">
+                            Hola, quisiera conocer más información
+                            sobre el tour.
+                        </p>
+                        <details class="mt-3">
+                            <summary class="w-fit cursor-pointer text-sm font-semibold text-sky-800 hover:text-sky-900">Responder</summary>
+                            <form class="message-reply-form mt-3 space-y-2">
+                                <label class="sr-only" for="reply-maria">Respuesta para María López</label>
+                                <textarea id="reply-maria" rows="2" required placeholder="Escribe una respuesta..." class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20"></textarea>
+                                <button type="submit" class="rounded-lg bg-sky-700 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-800">Enviar respuesta</button>
+                            </form>
+                        </details>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flex gap-4 p-5 transition-colors hover:bg-teal-50/50" data-message="carlos">
+
+                    <div class="flex size-11 shrink-0 items-center justify-center rounded-full bg-teal-100 font-bold text-teal-800">
+                        CP
+                    </div>
+
+                    <div class="min-w-0 flex-1">
+
+                        <strong class="text-sm text-slate-900">Carlos Pérez</strong>
+
+                        <span class="float-right text-xs text-slate-400">Ayer, 8:20 PM</span>
+
+                        <p class="mt-2 text-sm text-slate-600">
+                            ¿El hotel tiene disponibilidad para
+                            este fin de semana?
+                        </p>
+                        <details class="mt-3">
+                            <summary class="w-fit cursor-pointer text-sm font-semibold text-sky-800 hover:text-sky-900">Responder</summary>
+                            <form class="message-reply-form mt-3 space-y-2">
+                                <label class="sr-only" for="reply-carlos">Respuesta para Carlos Pérez</label>
+                                <textarea id="reply-carlos" rows="2" required placeholder="Escribe una respuesta..." class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-600/20"></textarea>
+                                <button type="submit" class="rounded-lg bg-sky-700 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-sky-800">Enviar respuesta</button>
+                            </form>
+                        </details>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= REPORTES ================= -->
+
+        <section id="reportes" class="section hidden space-y-6">
+
+            <div class="mb-6 flex items-center justify-between gap-4">
+
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Reportes</h2>
+                    <p class="mt-1 text-sm text-slate-500">Consulta el resumen de actividad.</p>
+                </div>
+
+                <button id="export-report" type="button" class="rounded-xl border border-sky-200 bg-white px-4 py-2.5 text-sm font-semibold text-sky-800 transition-colors hover:bg-sky-50">Descargar CSV</button>
+                <p id="report-feedback" class="sr-only" role="status" aria-live="polite"></p>
+
+            </div>
+
+
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+
+                <div class="rounded-2xl border border-amber-100 bg-white p-6 shadow-sm">
+                    <span class="inline-flex size-10 items-center justify-center rounded-xl bg-amber-50 text-xl">📈</span>
+                    <h3 id="report-bookings" class="my-4 text-3xl font-bold text-amber-800">32</h3>
+                    <p class="text-sm text-slate-500">Reservas este mes</p>
+                </div>
+
+                <div class="rounded-2xl border border-teal-100 bg-white p-6 shadow-sm">
+                    <span class="inline-flex size-10 items-center justify-center rounded-xl bg-teal-50 text-xl">💰</span>
+                    <h3 id="report-revenue" class="my-4 text-3xl font-bold text-teal-800">$3.850.000</h3>
+                    <p class="text-sm text-slate-500">Ingresos estimados</p>
+                </div>
+
+                <div class="rounded-2xl border border-sky-100 bg-white p-6 shadow-sm">
+                    <span class="inline-flex size-10 items-center justify-center rounded-xl bg-sky-50 text-xl">👥</span>
+                    <h3 id="report-clients" class="my-4 text-3xl font-bold text-sky-800">87</h3>
+                    <p class="text-sm text-slate-500">Clientes atendidos</p>
+                </div>
+
+                <div class="rounded-2xl border border-orange-100 bg-white p-6 shadow-sm">
+                    <span class="inline-flex size-10 items-center justify-center rounded-xl bg-orange-50 text-xl">⭐</span>
+                    <h3 id="report-rating" class="my-4 text-3xl font-bold text-orange-800">4.8</h3>
+                    <p class="text-sm text-slate-500">Calificación promedio</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= AJUSTES ================= -->
+
+        <section id="ajustes" class="section hidden space-y-6">
+
+            <div class="mb-6">
+
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Ajustes</h2>
+                    <p class="mt-1 text-sm text-slate-500">Configura tu cuenta y negocio.</p>
+                </div>
+
+            </div>
+
+
+            <div class="mb-6 max-w-4xl rounded-2xl border border-slate-200 bg-white px-5 shadow-sm">
+
+                <div class="flex items-center justify-between gap-4 border-b border-slate-100 py-5 last:border-0">
+
+                    <div>
+                        <strong class="text-sm font-semibold text-slate-900">Notificaciones</strong>
+
+                        <p class="mt-1 text-sm text-slate-500">
+                            Recibir avisos cuando llegue una nueva reserva.
+                        </p>
+                    </div>
+
+                    <label class="relative inline-flex cursor-pointer items-center">
+
+                        <input type="checkbox" checked class="setting-toggle peer sr-only" data-setting="notifications" aria-label="Activar notificaciones">
+                        <span class="h-6 w-11 rounded-full bg-slate-300 transition-colors after:absolute after:left-1 after:top-1 after:size-4 after:rounded-full after:bg-white after:transition-transform peer-checked:bg-teal-700 peer-checked:after:translate-x-5 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-teal-700"></span>
+
+                    </label>
+                    <span id="setting-status-notifications" class="sr-only" aria-live="polite">Activado</span>
+
+                </div>
+
+
+                <div class="flex items-center justify-between gap-4 border-b border-slate-100 py-5 last:border-0">
+
+                    <div>
+                        <strong class="text-sm font-semibold text-slate-900">Mensajes</strong>
+
+                        <p class="mt-1 text-sm text-slate-500">
+                            Permitir que los clientes envíen mensajes.
+                        </p>
+                    </div>
+
+                    <label class="relative inline-flex cursor-pointer items-center">
+
+                        <input type="checkbox" checked class="setting-toggle peer sr-only" data-setting="messages" aria-label="Permitir mensajes">
+                        <span class="h-6 w-11 rounded-full bg-slate-300 transition-colors after:absolute after:left-1 after:top-1 after:size-4 after:rounded-full after:bg-white after:transition-transform peer-checked:bg-teal-700 peer-checked:after:translate-x-5 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-teal-700"></span>
+
+                    </label>
+                    <span id="setting-status-messages" class="sr-only" aria-live="polite">Activado</span>
+
+                </div>
+
+
+                <div class="flex items-center justify-between gap-4 py-5">
+
+                    <div>
+
+                        <strong class="text-sm font-semibold text-slate-900">Disponibilidad</strong>
+
+                        <p class="mt-1 text-sm text-slate-500">
+                            Mostrar tus servicios públicamente.
+                        </p>
+
+                    </div>
+
+                    <label class="relative inline-flex cursor-pointer items-center">
+
+                        <input type="checkbox" checked class="setting-toggle peer sr-only" data-setting="availability" aria-label="Mostrar servicios públicamente">
+                        <span class="h-6 w-11 rounded-full bg-slate-300 transition-colors after:absolute after:left-1 after:top-1 after:size-4 after:rounded-full after:bg-white after:transition-transform peer-checked:bg-teal-700 peer-checked:after:translate-x-5 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-teal-700"></span>
+
+                    </label>
+                    <span id="setting-status-availability" class="sr-only" aria-live="polite">Activado</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

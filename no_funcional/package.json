@@ -1,0 +1,25 @@
+{
+  "name": "garzontraveler",
+  "version": "1.0.0",
+  "description": "hola mundo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanstivenjimenezcedeno-code/GarzonTraveler.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/juanstivenjimenezcedeno-code/GarzonTraveler/issues"
+  },
+  "homepage": "https://github.com/juanstivenjimenezcedeno-code/GarzonTraveler#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.24.3"
+  }
+}

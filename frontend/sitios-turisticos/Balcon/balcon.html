@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balcón del Huila | Garzon Traveler</title>
+    <!-- ARCHIVO CSS -->
+    <link rel="stylesheet" href="detalle.css">
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!--esto para añadir el tilwincss-->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Opcional: Personalizar tema en línea -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        green: '#39A900',        // bg-sena-green, text-sena-green
+                        'green-dark': '#2D8200', // hover:bg-sena-green-dark
+                        navy: '#00324D',         // bg-sena-navy
+                        'navy-dark': '#00263A'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <!--emcabezado-->
+    <header class="header">
+
+        <!--logo Garzon Traveler -->
+        <div class="logo">
+            <img src="../img/logo proyecto.png" alt="Garzon Traveler">
+            <div>
+                <strong>Garzon</strong>
+                <span>Traveler</span>
+            </div>
+        </div>
+
+        <!-- MENÚ -->
+        <nav class="menu">
+            <a href="../index.html">Inicio</a>
+            <a href="#" class="activo">Destino</a>
+            <a href="#">Ofertas</a>
+            <a href="#">Sobre nosotros</a>
+        </nav>
+
+        <!--foto de perfil del usuario -->
+        <div class="usuario">
+            <img src="../img-usuario/foto.1.jpeg" alt="Usuario">
+            <strong>Daniel G</strong>
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!--sitio-->
+    <section class="encabezado-destino">
+        <div>
+            <h1>Balcón del Huila</h1>
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Garzón, Huila, Colombia
+            </p>
+        </div>
+
+        <!-- ACCIONES -->
+        <div class="acciones">
+            <!-- Icono compartir -->
+            <button>
+                <i class="fa-solid fa-share-nodes"></i>
+                Compartir
+            </button>
+            <!-- Icono ubicación -->
+            <button>
+                <i class="fa-solid fa-location-dot"></i>
+                Ver ubicación
+            </button>
+            <!-- Icono guardar -->
+            <button>
+                <i class="fa-regular fa-heart"></i>
+                Guardar
+            </button>
+        </div>
+    </section>
+
+    <!--contenido principal-->
+    <main class="contenido">
+        <!--columna izquierda-->
+        <section class="columna-izquierda">
+            <!--fotos-->
+            <div class="galeria">
+                <!--imagen principal-->
+                <img src="../img/balcon-huila.jpg" alt="Balcón del Huila" class="imagen-principal">
+                <!-- BOTÓN RESERVAR -->
+                <button class="reservar">
+                    <i class="fa-regular fa-calendar"></i>
+                    Reservar ahora
+                </button>
+                <!-- FLECHA -->
+                <button class="flecha derecha">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!--miniaturas-->
+            <div class="miniaturas">
+                <!--Paisaje del Balcón -->
+                <img src="paisaje.jpg" alt="Paisaje Balcón del Huila">
+                <!--Mirador -->
+                <img src="mirador.jpg" alt="Mirador">
+                <!--Naturaleza -->
+                <img src="naturaleza.jpg" alt="Naturaleza">
+                <!--Zona turística -->
+                <img src="zona_turistica.jpg" alt="Zona turística">
+                <!--Vista panorámica -->
+                <img src="cabaña.jpg" alt="Cabaña">
+                <!-- CANTIDAD DE FOTOS -->
+                <div class="mas-fotos">
+                    +12
+                </div>
+            </div>
+
+            <!--categorios-->
+            <div class="categorias">
+                <span class="gastronomia">
+                    Gastronomía
+                </span>
+                <span class="hospedaje">
+                    Hospedaje
+                </span>
+                <span class="turismo">
+                    Turismo
+                </span>
+            </div>
+
+            <!--descripcion-->
+            <p class="descripcion">
+                Un mirador que ofrece una vista hermosa de los paisajes
+                del sur del departamento. Es un lugar ideal para apreciar
+                la naturaleza y tomar fotografías del entorno montañoso.
+                Muchos visitantes llegan para disfrutar del clima agradable
+                y la tranquilidad del sitio.
+            </p>
+
+            <!--reseñas-->
+            <section class="reseñas">
+                <!-- RESUMEN DE CALIFICACIÓN -->
+                <div class="resumen-rating">
+                    <div class="numero-rating">
+                        4.5
+                    </div>
+                    <div>
+                        <strong>Muy bueno</strong>
+                        <div class="estrellas">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </div>
+
+                    <!-- BARRAS DE CALIFICACIÓN -->
+                    <div class="barras">
+                        <div>
+                            5 ★
+                            <span><b></b></span>
+                        </div>
+                        <div>
+                            4 ★
+                            <span><b></b></span>
+                        </div>
+                        <div>
+                            3 ★
+                            <span><b></b></span>
+                        </div>
+                        <div>
+                            2 ★
+                            <span><b></b></span>
+                        </div>
+                        <div>
+                            1 ★
+                            <span><b></b></span>
+                        </div>
+                    </div>
+                    <small>34 comentarios</small>
+                </div>
+
+                <!-- opinion1-->
+                <article class="reseña">
+                    <img src="../img-usuario/usuario1.jpg" alt="Julian Fe">
+                    <div>
+                        <div class="nombre-reseña">
+                            <strong>Julian Fe</strong>
+                            <span>
+                                ★★★★★
+                            </span>
+                        </div>
+                        <p>
+                            Un lugar increíble, muy hermoso y con
+                            demasiado que ofrecer. La vista es única.
+                        </p>
+                        <small>
+                            Julio 09, 2024
+                        </small>
+                    </div>
+                </article>
+
+                <!-- opiniones -->
+                <article class="reseña">
+                    <img src="../img-usuario/usuario1.jpg" alt="Julian Fe">
+                    <div>
+                        <div class="nombre-reseña">
+                            <strong>Julian Fe</strong>
+                            <span>
+                                ★★★★☆
+                            </span>
+                        </div>
+                        <p>
+                            Una experiencia diferente.
+                            ¡Lo recomiendo totalmente!
+                        </p>
+                        <small>
+                            Julio 05, 2024
+                        </small>
+                    </div>
+                </article>
+            </section>
+        </section>
+
+        <!--columna derecha-->
+        <aside class="columna-derecha">
+            <!--horarios-->
+            <div class="card horario">
+                <div class="icono-card">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+                <div>
+                    <h3>Horario</h3>
+                    <p>
+                        todos los dias<br>
+                        10:00 AM - 10:00 PM
+                    </p>
+                </div>
+                <span class="abierto">
+                    Abierto ahora
+                </span>
+            </div>
+
+            <!--precio entrada-->
+            <div class="card precio">
+                <div class="icono-card">
+                    <i class="fa-solid fa-ticket"></i>
+                </div>
+                <div>
+                    <h3>Precio de entrada</h3>
+                    <span class="etiqueta">
+                        1 Persona
+                    </span>
+                </div>
+                <strong>
+                    $10.000 COP
+                </strong>
+            </div>
+
+            <!--precios hospedaje-->
+            <div class="card precio">
+                <div class="icono-card">
+                    <i class="fa-solid fa-bed"></i>
+                </div>
+                <div>
+                    <h3>Precio de hospedaje</h3>
+                    <span class="etiqueta">
+                        1 Habitación
+                    </span>
+                    <span class="etiqueta">
+                        1 Cama
+                    </span>
+                </div>
+                <strong>
+                    $250.000 COP
+                </strong>
+            </div>
+
+            <!--servicios-->
+            <div class="servicios-card">
+                <h2>
+                    Servicios incluidos
+                </h2>
+                <div class="servicios">
+                    <!-- WIFI -->
+                    <div>
+                        <i class="fa-solid fa-wifi"></i>
+                        <span>
+                            Internet gratis
+                        </span>
+                    </div>
+                    <!-- COMIDA -->
+                    <div>
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>
+                            Comida incluida
+                        </span>
+                    </div>
+                    <!-- LIMPIEZA -->
+                    <div>
+                        <i class="fa-solid fa-broom"></i>
+                        <span>
+                            Servicio de limpieza
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!--sitios similares-->
+    <section class="similares">
+        <div class="titulo-seccion">
+            <h2>
+                Sitios similares en la zona
+            </h2>
+            <a href="#">
+                Ver todos
+            </a>
+        </div>
+
+        <div class="tarjetas-similares">
+            <article class="sitio">
+                <!--FOTO DEL MIRADOR LA JAGUA -->
+                <img src="img/mirador-jagua.jpg" alt="Mirador La Jagua">
+                <div>
+                    <h3>
+                        Mirador La Jagua
+                    </h3>
+                    <span>
+                        4.6 ★★★★★
+                    </span>
+                    <small>
+                        12 km
+                    </small>
+                </div>
+            </article>
+
+            <article class="sitio">
+                <!--FOTO DE LA CASCADA DE LAS DAMAS -->
+                <img src="../img/las-damas.jpg" alt="Cascada de las Damas">
+                <div>
+                    <h3>
+                        Cascada de las Damas
+                    </h3>
+                    <span>
+                        4.4 ★★★★★
+                    </span>
+                    <small>
+                        18 km
+                    </small>
+                </div>
+            </article>
+
+            <article class="sitio">
+                <!--FOTO DE KUMBRE DEL HUILA -->
+                <img src="../img/kumbre.jpg" alt="Kumbre del Huila">
+                <div>
+                    <h3>
+                        Kumbre del Huila
+                    </h3>
+                    <span>
+                        4.7 ★★★★★
+                    </span>
+                    <small>
+                        22 km
+                    </small>
+                </div>
+            </article>
+
+            <article class="sitio">
+                <!--FOTO DEL JARDÍN DEL EDÉN -->
+                <img src="../img/jardin-eden.jpg" alt="Jardín del Edén">
+                <div>
+                    <h3>
+                        Jardín del Edén
+                    </h3>
+                    <span>
+                        4.5 ★★★★★
+                    </span>
+                    <small>
+                        25 km
+                    </small>
+                </div>
+            </article>
+
+            <article class="sitio">
+                <!--FOTO DE FINCA LA PALESTINA -->
+                <img src="../img/palestina.jpg" alt="Finca La Palestina">
+                <div>
+                    <h3>
+                        Finca La Palestina
+                    </h3>
+                    <span>
+                        4.3 ★★★★★
+                    </span>
+                    <small>
+                        30 km
+                    </small>
+                </div>
+            </article>
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>

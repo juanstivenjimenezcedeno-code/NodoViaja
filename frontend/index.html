@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Descubre pueblos, paisajes, gastronomía y experiencias turísticas del Huila con NodoViaja." />
+  <title>NodoViaja | Descubre el Huila</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nodo: { blue: '#0A5FD6', aqua: '#00C9A7', orange: '#FF8A00', light: '#1E90FF', ink: '#1E293B', muted: '#64748B', night: '#062A3A' }
+          },
+          boxShadow: { soft: '0 18px 45px rgba(15, 23, 42, 0.10)' }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-white text-nodo-ink antialiased selection:bg-nodo-aqua/30">
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-white/20 bg-slate-950/55 text-white backdrop-blur-xl">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Navegación principal">
+      <a href="#principal" class="flex items-center gap-2 text-xl font-black tracking-tight" aria-label="NodoViaja, ir al inicio">
+       
+        <img src="../frontend/assets/landing/Logo.png" alt="Logo de NodoViaja" class="h-9 w-9 shrink-0 rounded-xl object-contain">
+
+        <span>Nodo<span class="text-nodo-orange">Viaja</span></span>
+      </a>
+      <div class="hidden items-center gap-1 md:flex">
+        <a data-nav href="#principal" class="nav-link rounded-full px-4 py-2 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white">Principal</a>
+        <a data-nav href="#nosotros" class="nav-link rounded-full px-4 py-2 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white">Nosotros</a>
+        <a data-nav href="#recomendados" class="nav-link rounded-full px-4 py-2 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white">Recomendados</a>
+        <a data-nav href="#sitios" class="nav-link rounded-full px-4 py-2 text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white">Sitios</a>
+      </div>
+      <div class="hidden items-center gap-2 md:flex">
+        <a href="/frontend/login.html" data-auth="login" class="rounded-full px-4 py-2 text-sm font-bold text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-nodo-aqua">Iniciar sesión</a>
+        <a href="/frontend/seleccion-cuenta.html" data-auth="register" class="rounded-full bg-nodo-orange px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-nodo-orange">Registrarse</a>
+      </div>
+      <button id="menu-toggle" class="grid h-11 w-11 place-items-center rounded-xl border border-white/20 text-2xl md:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-white/10 bg-slate-950/95 px-4 pb-4 pt-2 backdrop-blur-xl md:hidden">
+      <div class="mx-auto flex max-w-7xl flex-col gap-1">
+        <a data-nav href="#principal" class="rounded-xl px-4 py-3 font-semibold hover:bg-white/10">Principal</a>
+        <a data-nav href="#nosotros" class="rounded-xl px-4 py-3 font-semibold hover:bg-white/10">Nosotros</a>
+        <a data-nav href="#recomendados" class="rounded-xl px-4 py-3 font-semibold hover:bg-white/10">Recomendados</a>
+        <a data-nav href="#sitios" class="rounded-xl px-4 py-3 font-semibold hover:bg-white/10">Sitios</a>
+        <div class="mt-2 grid grid-cols-2 gap-2">
+          <a href="../frontend/login.html" data-auth="login" class="rounded-xl border border-white/25 px-3 py-3 font-bold">Iniciar sesión</a>
+          <a href="/frontend/seleccion-cuenta.html" data-auth="register" class="rounded-xl bg-nodo-orange px-3 py-3 font-bold">Registrarse</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="principal" class="relative flex min-h-[720px] scroll-mt-20 items-center overflow-hidden bg-slate-900 pt-24 sm:min-h-[760px]">
+      <img src="/frontend/assets/landing/Principal.jpg" alt="Paisaje natural de montañas y vegetación al amanecer" class="absolute inset-0 h-full w-full object-cover" onerror="this.classList.add('hidden')" />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/65 to-slate-950/20"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-slate-950/20"></div>
+      <div class="relative mx-auto w-full max-w-7xl px-4 pb-24 pt-16 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-md">
+            <span class="relative flex h-2.5 w-2.5"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-nodo-aqua opacity-75"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-nodo-aqua"></span></span>
+            Tu próxima aventura comienza aquí
+          </div>
+          <h1 class="max-w-3xl text-5xl font-black leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl">El Huila te espera.<span class="text-nodo-aqua"> ¿Vamos?</span></h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-white/80 sm:text-xl">Descubre pueblos mágicos, sabores auténticos y paisajes extraordinarios. Reserva experiencias únicas en el corazón de Colombia.</p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="../frontend/seleccion-cuenta.html" data-auth="register" class="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-nodo-orange px-8 py-4 font-bold text-white shadow-xl shadow-orange-950/30 transition hover:-translate-y-1 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-nodo-orange">Registrarse<span aria-hidden="true"></span></a>
+            <a href="../frontend/login.html" data-auth="login" class="inline-flex min-h-14 items-center justify-center rounded-full border border-white/40 bg-white/10 px-8 py-4 font-bold text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-nodo-aqua">Iniciar sesión</a>
+          </div>
+          <a href="#sitios" class="mt-9 inline-flex items-center gap-3 text-sm font-bold text-white/85 transition hover:text-nodo-aqua"><span class="grid h-10 w-10 place-items-center rounded-full border border-white/30 text-lg">↓</span> Explora destinos que inspiran</a>
+        </div>
+        <div class="mt-14 flex flex-wrap gap-3 text-sm text-white/85">
+          <span class="rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur">✦ Naturaleza viva</span>
+          <span class="rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur">⌂ Cultura local</span>
+          <span class="rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur">♡ Experiencias auténticas</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Beneficios de NodoViaja" class="relative z-10 -mt-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid overflow-hidden rounded-3xl bg-white shadow-soft ring-1 ring-slate-200 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="flex gap-4 p-6 lg:p-7"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-50 text-2xl">⌂</span><div><h2 class="font-extrabold">Pueblos con encanto</h2><p class="mt-1 text-sm leading-6 text-nodo-muted">Cultura, tradiciones y rincones llenos de historias.</p></div></article>
+        <article class="flex gap-4 border-t border-slate-100 p-6 sm:border-l lg:border-t-0 lg:p-7"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-2xl">♧</span><div><h2 class="font-extrabold">Naturaleza increíble</h2><p class="mt-1 text-sm leading-6 text-nodo-muted">Montañas, ríos, desiertos y cascadas por descubrir.</p></div></article>
+        <article class="flex gap-4 border-t border-slate-100 p-6 lg:border-l lg:border-t-0 lg:p-7"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-orange-50 text-2xl">↗</span><div><h2 class="font-extrabold">Reservas sencillas</h2><p class="mt-1 text-sm leading-6 text-nodo-muted">Encuentra opciones para organizar tu próxima escapada.</p></div></article>
+        <article class="flex gap-4 border-t border-slate-100 p-6 sm:border-l lg:border-t-0 lg:p-7"><span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-teal-50 text-2xl">♡</span><div><h2 class="font-extrabold">Turismo local</h2><p class="mt-1 text-sm leading-6 text-nodo-muted">Apoya a emprendedores y negocios de la región.</p></div></article>
+      </div>
+    </section>
+
+    <section id="nosotros" class="scroll-mt-24 py-24 sm:py-28">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+        <div>
+          <p class="text-sm font-extrabold uppercase tracking-[0.2em] text-nodo-blue">Somos NodoViaja</p>
+          <h2 class="mt-4 text-3xl font-black tracking-tight text-slate-900 sm:text-5xl">Conectamos viajeros con <span class="text-nodo-aqua">lo extraordinario.</span></h2>
+          <p class="mt-6 text-lg leading-8 text-nodo-muted">NodoViaja, anteriormente Garzon Traveler, nace con el propósito de conectar a los viajeros con los alojamientos, restaurantes, guías y experiencias turísticas del Huila.</p>
+          <p class="mt-4 leading-7 text-nodo-muted">Queremos que descubrir nuestra región sea más fácil, reuniendo en un solo lugar opciones para hospedarse, disfrutar la gastronomía local y explorar los tesoros naturales y culturales de nuestros municipios.</p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="flex items-start gap-3"><span class="mt-1 text-xl text-nodo-aqua">✓</span><div><p class="font-bold">Orgullo regional</p><p class="mt-1 text-sm text-nodo-muted">Historias y cultura del territorio.</p></div></div>
+            <div class="flex items-start gap-3"><span class="mt-1 text-xl text-nodo-aqua">✓</span><div><p class="font-bold">Comercio local</p><p class="mt-1 text-sm text-nodo-muted">Visibilidad para negocios de la región.</p></div></div>
+          </div>
+          <a href="#recomendados" class="mt-9 inline-flex items-center gap-2 rounded-full bg-nodo-blue px-6 py-3.5 font-bold text-white transition hover:-translate-y-0.5 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-nodo-blue focus:ring-offset-2">Explorar recomendados <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="relative">
+          <div class="absolute -left-5 -top-5 h-28 w-28 rounded-3xl bg-nodo-aqua/20"></div>
+          <img src="/frontend/assets/landing/Nosotros.jpg" alt="Arquitectura y paisaje urbano que evocan la riqueza cultural de Colombia" class="relative h-[420px] w-full rounded-[2rem] object-cover shadow-soft sm:h-[520px]" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80'" />
+          <div class="absolute -bottom-5 left-4 right-4 rounded-2xl border border-white/60 bg-white/90 p-5 shadow-xl backdrop-blur sm:left-auto sm:right-6 sm:w-72"><p class="text-xs font-bold uppercase tracking-widest text-nodo-muted">Nuestra inspiración</p><p class="mt-1 text-xl font-black text-slate-900">Huila, un destino, mil historias.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Cifras ilustrativas de NodoViaja" class="bg-[#064B50] py-14 text-white sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p class="text-sm font-bold uppercase tracking-[0.2em] text-nodo-aqua">El destino te espera</p><h2 class="mt-2 text-3xl font-black sm:text-4xl">Un territorio por descubrir</h2></div><p class="max-w-sm text-sm leading-6 text-white/65"></p></div>
+        <div class="grid grid-cols-2 gap-7 lg:grid-cols-4">
+          <div class="border-l-2 border-nodo-aqua pl-4"><p class="text-4xl font-black sm:text-5xl">120<span class="text-nodo-orange">+</span></p><p class="mt-2 text-sm font-semibold text-white/75">Negocios aliados <span class="block text-xs text-white/50"></span></p></div>
+          <div class="border-l-2 border-nodo-aqua pl-4"><p class="text-4xl font-black sm:text-5xl">37</p><p class="mt-2 text-sm font-semibold text-white/75">Municipios del Huila</p></div>
+          <div class="border-l-2 border-nodo-aqua pl-4"><p class="text-4xl font-black sm:text-5xl">100<span class="text-nodo-orange">+</span></p><p class="mt-2 text-sm font-semibold text-white/75">Experiencias por explorar <span class="block text-xs text-white/50"></span></p></div>
+          <div class="border-l-2 border-nodo-aqua pl-4"><p class="text-4xl font-black sm:text-5xl">1</p><p class="mt-2 text-sm font-semibold text-white/75">Destino lleno de historias</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recomendados" class="scroll-mt-24 bg-slate-50 py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div><p class="text-sm font-extrabold uppercase tracking-[0.2em] text-nodo-blue">Selección para inspirarte</p><h2 class="mt-3 text-3xl font-black tracking-tight text-slate-900 sm:text-5xl">Recomendados <span class="text-nodo-aqua">para ti.</span></h2><p class="mt-4 max-w-xl text-lg text-nodo-muted">Encuentra lugares para descansar, comer y vivir el Huila.</p></div>
+          <span class="w-fit rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs font-bold text-orange-800">-Los precios pueden cambiar-</span>
+        </div>
+        <div id="business-grid" class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <article class="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200/80 transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="relative h-56 overflow-hidden"><img src="/frontend/assets/landing/LosAndaquies" alt="Piscina y zona exterior de un alojamiento, imagen ilustrativa" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" /><span class="absolute left-4 top-4 rounded-full bg-nodo-orange px-3 py-1.5 text-xs font-extrabold text-white">Alojamiento</span><span class="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-slate-700">Abierto</span></div>
+            <div class="p-6"><div class="flex items-start justify-between gap-3"><div><h3 class="text-xl font-black">Hotel Alto de los Andaquies</h3><p class="mt-1 text-sm text-nodo-muted">San Agustín, Huila</p></div><span class="shrink-0 rounded-lg bg-amber-50 px-2.5 py-1.5 text-sm font-extrabold text-amber-700">★ 4.8</span></div><p class="mt-4 text-sm leading-6 text-nodo-muted">Una estancia acogedora para descansar y contemplar el paisaje regional.</p><div class="mt-5 flex items-end justify-between gap-3 border-t border-slate-100 pt-4"><p class="text-lg font-black text-slate-900">$180.000 <span class="text-xs font-medium text-nodo-muted">/ noche</span></p><button data-detail="Hotel Mirador Andino" class="rounded-full bg-nodo-blue px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-nodo-blue focus:ring-offset-2">Ver disponibilidad</button></div></div>
+          </article>
+          <article class="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200/80 transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="relative h-56 overflow-hidden"><img src="/frontend/assets/landing/LaMar.jfif" alt="Plato servido en un restaurante, imagen ilustrativa" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" /><span class="absolute left-4 top-4 rounded-full bg-nodo-orange px-3 py-1.5 text-xs font-extrabold text-white">Restaurante</span><span class="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-slate-700">Abierto</span></div>
+            <div class="p-6"><div class="flex items-start justify-between gap-3"><div><h3 class="text-xl font-black">Restaurante La Mar Pacífico</h3><p class="mt-1 text-sm text-nodo-muted">Garzón, Huila</p></div><span class="shrink-0 rounded-lg bg-amber-50 px-2.5 py-1.5 text-sm font-extrabold text-amber-700">★ 4.7</span></div><p class="mt-4 text-sm leading-6 text-nodo-muted">Una propuesta gastronómica inspirada en ingredientes y sabores locales.</p><div class="mt-5 flex items-end justify-between gap-3 border-t border-slate-100 pt-4"><p class="text-lg font-black text-slate-900">$40.000-$90.000 <span class="text-xs font-medium text-nodo-muted">/ persona</span></p><button data-detail="Sabores del Macizo" class="rounded-full bg-nodo-blue px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-nodo-blue focus:ring-offset-2">Conocer negocio</button></div></div>
+          </article>
+          <article class="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200/80 transition duration-300 hover:-translate-y-1 hover:shadow-soft">
+            <div class="relative h-56 overflow-hidden"><img src="/frontend/assets/landing/Balcon.jfif" alt="Casa rural rodeada de vegetación, imagen ilustrativa" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" /><span class="absolute left-4 top-4 rounded-full bg-nodo-orange px-3 py-1.5 text-xs font-extrabold text-white">Turismo rural</span><span class="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-slate-700">Abierto</span></div>
+            <div class="p-6"><div class="flex items-start justify-between gap-3"><div><h3 class="text-xl font-black">El Balcón del Huila <br></h3><p class="mt-1 text-sm text-nodo-muted">Garzón, Huila</p></div><span class="shrink-0 rounded-lg bg-amber-50 px-2.5 py-1.5 text-sm font-extrabold text-amber-700">★ 4.9</span></div><p class="mt-4 text-sm leading-6 text-nodo-muted">Una idea de escapada rural para conectar con la tranquilidad del territorio y sus bellos paisajes.</p><div class="mt-5 flex items-end justify-between gap-3 border-t border-slate-100 pt-4"><p class="text-lg font-black text-slate-900">$150.000 <span class="text-xs font-medium text-nodo-muted">/ noche</span></p><button data-detail="Finca Raíces del Huila" class="rounded-full bg-nodo-blue px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-nodo-blue focus:ring-offset-2">Ver disponibilidad</button></div></div>
+          </article>
+        </div>
+        <div class="mt-8 text-center"><button id="all-businesses" class="rounded-full border border-slate-300 px-6 py-3 font-bold text-slate-700 transition hover:border-nodo-blue hover:text-nodo-blue focus:outline-none focus:ring-2 focus:ring-nodo-blue">Ver todos los recomendados <span aria-hidden="true">→</span></button></div>
+      </div>
+    </section>
+
+    <section id="sitios" class="scroll-mt-24 overflow-hidden py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+          <div><p class="text-sm font-extrabold uppercase tracking-[0.2em] text-nodo-blue">Inspira tu próxima ruta</p><h2 class="mt-3 text-3xl font-black tracking-tight text-slate-900 sm:text-5xl">Sitios para enamorarte <span class="text-nodo-aqua">del Huila.</span></h2><p class="mt-4 max-w-2xl text-lg text-nodo-muted">Naturaleza, aventura y cultura en cada recorrido.</p></div>
+          <div class="flex gap-2"><button id="prev-site" aria-label="Ver sitios anteriores" class="grid h-12 w-12 place-items-center rounded-full border border-slate-300 text-xl transition hover:border-nodo-blue hover:bg-nodo-blue hover:text-white focus:outline-none focus:ring-2 focus:ring-nodo-blue">←</button><button id="next-site" aria-label="Ver sitios siguientes" class="grid h-12 w-12 place-items-center rounded-full bg-nodo-blue text-xl text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-nodo-blue focus:ring-offset-2">→</button></div>
+        </div>
+        <div id="site-track" tabindex="0" aria-label="Carrusel de sitios turísticos. Usa las flechas izquierda y derecha para recorrer las tarjetas." class="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-6 focus:outline-none focus:ring-2 focus:ring-nodo-blue/40">
+          <article class="site-card group relative h-[420px] w-[82vw] max-w-sm shrink-0 snap-start overflow-hidden rounded-3xl bg-slate-900 sm:w-[360px]"><img src="/frontend/assets/landing/Bordones.jfif" alt="Cascada rodeada de vegetación, imagen ilustrativa de naturaleza" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/25 to-transparent"></div><div class="absolute left-5 top-5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">Naturaleza</div><div class="absolute inset-x-0 bottom-0 p-6 text-white"><h3 class="text-2xl font-black">Salto de Bordones</h3><p class="mt-2 text-sm leading-6 text-white/80">Una impresionante cascada en un entorno montañoso y de vegetación exuberante.</p><div class="mt-5 flex items-center justify-between gap-3"><span class="text-xs font-semibold text-white/70">Tours: consulta próximos tours</span><button data-tour="Salto de Bordones" class="rounded-full bg-nodo-orange px-4 py-2.5 text-sm font-bold transition hover:bg-orange-500">Explorar</button></div></div></article>
+          <article class="site-card group relative h-[420px] w-[82vw] max-w-sm shrink-0 snap-start overflow-hidden rounded-3xl bg-slate-900 sm:w-[360px]"><img src="/frontend/assets/landing/Tatacoa.jfif" alt="Paisaje árido con tonos ocres y formaciones rocosas, imagen ilustrativa" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/25 to-transparent"></div><div class="absolute left-5 top-5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">Aventura</div><div class="absolute inset-x-0 bottom-0 p-6 text-white"><h3 class="text-2xl font-black">Desierto de la Tatacoa</h3><p class="mt-2 text-sm leading-6 text-white/80">Formaciones geológicas, caminos rojizos y cielos para contemplar las estrellas.</p><div class="mt-5 flex items-center justify-between gap-3"><span class="text-xs font-semibold text-white/70">Tours: consulta próximos tours</span><button data-tour="Desierto de la Tatacoa" class="rounded-full bg-nodo-orange px-4 py-2.5 text-sm font-bold transition hover:bg-orange-500">Explorar </button></div></div></article>
+          <article class="site-card group relative h-[420px] w-[82vw] max-w-sm shrink-0 snap-start overflow-hidden rounded-3xl bg-slate-900 sm:w-[360px]"><img src="/frontend/assets/landing/Magdalena.jfif" alt="Río que atraviesa un paisaje verde, fotografía ilustrativa" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/25 to-transparent"></div><div class="absolute left-5 top-5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">Ecoturismo</div><div class="absolute inset-x-0 bottom-0 p-6 text-white"><h3 class="text-2xl font-black">Río Magdalena</h3><p class="mt-2 text-sm leading-6 text-white/80">Descubre el río emblemático de Colombia y los paisajes que acompañan su recorrido.</p><div class="mt-5 flex items-center justify-between gap-3"><span class="text-xs font-semibold text-white/70">Tours: consulta próximos tours</span><button data-tour="Río Magdalena" class="rounded-full bg-nodo-orange px-4 py-2.5 text-sm font-bold transition hover:bg-orange-500">Explorar </button></div></div></article>
+          <article class="site-card group relative h-[420px] w-[82vw] max-w-sm shrink-0 snap-start overflow-hidden rounded-3xl bg-slate-900 sm:w-[360px]"><img src="/frontend/assets/landing/SanAgustín.jfif" alt="Escultura y entorno arqueológico, imagen ilustrativa de patrimonio" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/25 to-transparent"></div><div class="absolute left-5 top-5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">Cultura y patrimonio</div><div class="absolute inset-x-0 bottom-0 p-6 text-white"><h3 class="text-2xl font-black">San Agustín</h3><p class="mt-2 text-sm leading-6 text-white/80">Un destino reconocido por su patrimonio arqueológico y riqueza cultural.</p><div class="mt-5 flex items-center justify-between gap-3"><span class="text-xs font-semibold text-white/70">Tours: consulta próximos tours</span><button data-tour="San Agustín" class="rounded-full bg-nodo-orange px-4 py-2.5 text-sm font-bold transition hover:bg-orange-500">Explorar </button></div></div></article>
+          <article class="site-card group relative h-[420px] w-[82vw] max-w-sm shrink-0 snap-start overflow-hidden rounded-3xl bg-slate-900 sm:w-[360px]"><img src="/frontend/assets/landing/Otros.jfif" alt="Paisaje de montaña y vegetación natural, destino ilustrativo" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/25 to-transparent"></div><div class="absolute left-5 top-5 rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold text-white backdrop-blur">Por descubrir</div><div class="absolute inset-x-0 bottom-0 p-6 text-white"><h3 class="text-2xl font-black">Otros destinos del Huila</h3><p class="mt-2 text-sm leading-6 text-white/80">Nuevas rutas y lugares por sumar a medida que se verifique la información turística.</p><div class="mt-5 flex items-center justify-between gap-3"><span class="text-xs font-semibold text-white/70">Tours: próximamente</span><button data-tour="Otros destinos del Huila" class="rounded-full bg-nodo-orange px-4 py-2.5 text-sm font-bold transition hover:bg-orange-500">Explorar más</button></div></div></article>
+        </div>
+        <div id="site-dots" class="mt-2 flex justify-center gap-2" aria-label="Posición del carrusel"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#041F2A] text-white">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-3 lg:px-8 lg:py-16">
+      <div><a href="#principal" class="flex items-center gap-2 text-2xl font-black"><span class="grid h-10 w-10 place-items-center rounded-xl bg-nodo-orange">N</span><span>Nodo<span class="text-nodo-orange">Viaja</span></span></a><p class="mt-5 max-w-sm leading-7 text-white/65">Una forma más cercana de descubrir alojamientos, sabores y experiencias que hacen único al sur de Colombia.</p><p class="mt-4 font-bold text-nodo-aqua">Huila, un destino, mil historias.</p></div>
+      <div><h2 class="text-sm font-extrabold uppercase tracking-[0.18em] text-white/50">Explora NodoViaja</h2><div class="mt-5 grid grid-cols-2 gap-x-5 gap-y-3 text-sm font-semibold"><a href="#principal" class="text-white/80 transition hover:text-nodo-aqua">Principal</a><a href="#nosotros" class="text-white/80 transition hover:text-nodo-aqua">Nosotros</a><a href="#recomendados" class="text-white/80 transition hover:text-nodo-aqua">Recomendados</a><a href="#sitios" class="text-white/80 transition hover:text-nodo-aqua">Sitios</a></div></div>
+    </div>
+    <div class="border-t border-white/10"><div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-white/45 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8"><p>© <span id="current-year"></span> NodoViaja. Todos los derechos reservados.</p><p>Hecho para descubrir la riqueza del Huila, Colombia.</p></div></div>
+  </footer>
+
+
+  </script>
+</body>
+</html>
