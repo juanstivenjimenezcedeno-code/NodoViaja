@@ -29,6 +29,10 @@ header {
     cursor: pointer;
 }
 
+.usuario[hidden] {
+    display: none;
+}
+
 .logo img,
 .usuario img {
     width: clamp(24px, 4vw, 40px);
@@ -117,7 +121,7 @@ nav a {
 /* BANNER */
 .banner {
     height: 350px;
-    background-image: url("img/baner_fondo.jpeg");
+    background-image: url("../assets/img/baner_fondo.jpeg");
     background-size: cover;
     background-position: center;
     display: flex;

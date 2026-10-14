@@ -46,6 +46,12 @@ app.post('/api/usuarios', async (req, res) => {
             mensaje: 'Usuario agregado correctamente'
         });
     } catch (error) {
+        if (error.code === 'ER_DUP_ENTRY') {
+            return res.status(409).json({
+                exito: false,
+                error: 'Este correo ya está registrado'
+            });
+        }
         console.error("❌ Error insertando usuario en SQL:", error);
         res.status(500).json({
             exito: false,
@@ -71,16 +77,14 @@ app.post('/api/usuarios', async (req, res) => {
 
 app.post('/api/login', async (req, res) => { //post es más privado que el get, req peticion del cliente y res respuesta al cliente 
     const { correo, contrasena } = req.body; //rep pide lo que haya escrito en el body
-    console.log("Petición de login recibida:", { correo, contrasena }); //muestra si funciona
     if (!correo || !contrasena) {
         return res.status(400).json({ exito: false, error: 'Faltan datos' }); //error(401), mira si falta un dato si es asi manda el msj
     }
     try { //intenta ejecutar instrucciones como si fuera un if y un else
         const [filas] = await pool.query( // consulta el SQL
-            'SELECT * FROM usuarios WHERE correo = ? AND `contrasena` = ?',  // evita vulnerabidades (?), lo cual protege el sistema contra inyecciones SQL.
+            'SELECT id_usuario, nombre, apellido, correo, id_rol FROM usuarios WHERE correo = ? AND `contrasena` = ?',  // evita vulnerabidades (?), lo cual protege el sistema contra inyecciones SQL.
             [correo, contrasena]
         );
-        console.log("Filas encontradas en DB:", filas); //muestra quien entró en la terminal 
         if (filas.length > 0) { //length para ver si en las filas encontro resultados 
             res.status(200).json({ exito: true, usuarios: filas[0] }); //estatus(200) todo bien con los datos, filas 0 dame al primer usuario q coincida
         } else {

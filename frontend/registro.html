@@ -30,7 +30,7 @@
         <header class="space-y-4 text-center">
             <div class="relative mx-auto flex size-28 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 via-teal-400 to-sky-500 p-[3px] shadow-xl shadow-sky-950/30">
                 <div class="flex size-full items-center justify-center overflow-hidden rounded-full bg-slate-950 p-1">
-                    <img src="../frontend/assets/ima/image.png" alt="Logo de Nodoviaja" class="size-full rounded-full object-cover">
+                    <img src="assets/ima/image.png" alt="Logo de Nodoviaja" class="size-full rounded-full object-cover">
                 </div>
                 <span data-dark-class="absolute -bottom-1 -right-1 size-5 rounded-full border-4 border-slate-900 bg-teal-400"
                     data-light-class="absolute -bottom-1 -right-1 size-5 rounded-full border-4 border-white bg-teal-600"
@@ -80,6 +80,14 @@
             <div>
                 <label for="correo" data-dark-class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-300" data-light-class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-700" class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-300">Correo electrónico</label>
                 <input type="email" id="correo" name="correo" autocomplete="email" required placeholder="tucorreo@ejemplo.com"
+                    data-dark-class="w-full rounded-xl border border-slate-600 bg-slate-950/50 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-400 focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400/20"
+                    data-light-class="w-full rounded-xl border border-sky-200 bg-sky-50/50 px-4 py-3 text-sm text-slate-800 placeholder:text-slate-500 transition-colors focus:border-teal-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-600/20"
+                    class="w-full rounded-xl border border-slate-600 bg-slate-950/50 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-400 focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400/20">
+            </div>
+
+            <div>
+                <label for="telefono" data-dark-class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-300" data-light-class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-700" class="mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-300">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" autocomplete="tel" required maxlength="20" placeholder="Tu número de teléfono"
                     data-dark-class="w-full rounded-xl border border-slate-600 bg-slate-950/50 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-400 focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400/20"
                     data-light-class="w-full rounded-xl border border-sky-200 bg-sky-50/50 px-4 py-3 text-sm text-slate-800 placeholder:text-slate-500 transition-colors focus:border-teal-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-teal-600/20"
                     class="w-full rounded-xl border border-slate-600 bg-slate-950/50 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-400 focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400/20">
@@ -138,15 +146,14 @@
                 <span id="register-button-label">Crear cuenta de turista</span>
             </button>
         </form>
-
         <!-- Enlace para usuarios que ya tienen una cuenta -->
         <p data-dark-class="border-t border-slate-700 pt-4 text-center text-sm text-slate-400"
             data-light-class="border-t border-sky-100 pt-4 text-center text-sm text-slate-700"
             class="border-t border-slate-700 pt-4 text-center text-sm text-slate-400">
-            ¿Ya tienes cuenta? <a href="../frontend/login.html" data-dark-class="font-semibold text-teal-300 hover:text-teal-200 hover:underline" data-light-class="font-semibold text-teal-700 hover:text-teal-800 hover:underline" class="font-semibold text-teal-300 hover:text-teal-200 hover:underline">Inicia sesión aquí</a>
+            ¿Ya tienes cuenta? <a href="login.html" data-dark-class="font-semibold text-teal-300 hover:text-teal-200 hover:underline" data-light-class="font-semibold text-teal-700 hover:text-teal-800 hover:underline" class="font-semibold text-teal-300 hover:text-teal-200 hover:underline">Inicia sesión aquí</a>
         </p>
     </main>
     <!-- Lógica del tema, el perfil seleccionado y la validación de contraseñas -->
-    <script src="/frontend/js/registro.js" defer></script>
+    <script src="js/registro.js" defer></script>
 </body>
 </html>  

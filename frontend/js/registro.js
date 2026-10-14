@@ -7,6 +7,7 @@ const confirmPasswordInput = document.getElementById("confirmar-password");
 const themeToggle = document.getElementById("theme-toggle");
 const themeLabel = document.getElementById("theme-label");
 const themeIcon = document.getElementById("theme-icon");
+const registerForm = document.getElementById("register-form");
 
 const profileOptions = {
     turista: {
@@ -46,6 +47,16 @@ function validatePasswords() {
 profileSelect.addEventListener("change", updateProfileDetails);
 passwordInput.addEventListener("input", validatePasswords);
 confirmPasswordInput.addEventListener("input", validatePasswords);
+
+registerForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    validatePasswords();
+    if (!registerForm.reportValidity()) {
+        return;
+    }
+
+    window.location.assign("login.html?registro=sin-servidor");
+});
 
 themeToggle.addEventListener("click", () => {
     const isDark = document.body.dataset.theme === "dark";
