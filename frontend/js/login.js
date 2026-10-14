@@ -27,3 +27,10 @@ passwordToggle.addEventListener("click", () => {
     passwordToggle.setAttribute("aria-label", showPassword ? "Ocultar contraseña" : "Mostrar contraseña");
     passwordToggleLabel.textContent = showPassword ? "Ocultar" : "Mostrar";
 });
+
+const loginForm = document.getElementById("login-form");
+
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    window.location.href = "../index.html";
+});
