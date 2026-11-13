@@ -1,17 +1,20 @@
 {
-  "name": "garzontraveler",
+  "name": "nodoviaja-backend",
   "version": "1.0.0",
-  "description": "hola mundo",
-  "main": "index.js",
+  "description": "backend de nodoviaja (node.js + Express + postgreSQL)",
+  "type": "module",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juanstivenjimenezcedeno-code/GarzonTraveler.git"
   },
   "keywords": [],
-  "type": "commonjs",
+  "author": "Johan Collazos, Juan Jimenez, Keissy Benitez, Laura Parra",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/juanstivenjimenezcedeno-code/GarzonTraveler/issues"
   },
